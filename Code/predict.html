@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Poultry Prediction</title>
+  <style>
+    /* Reuse bounce animation */
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .emoji-button {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      border: none;
+      border-radius: 50%;
+      background-color: #fff4d4;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+      color: #333;
+      animation: bounce 1s infinite;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+
+    .emoji-button:hover {
+      background-color: #ffeaa7;
+    }
+
+    .emoji-button span {
+      font-size: 40px;
+    }
+
+    .emoji-button p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-top: 80px;
+      background-color: #fff7e6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🐥 Upload Image to Predict Poultry Disease</h1>
+  <input type="file" accept="image/*"><br><br>
+
+  <!-- Bouncing Hen Emoji Predict Button -->
+  <!-- Predict Button -->
+<button class="emoji-button" onclick="predictDisease()">
+  <span>🐔</span>
+  <p>Predict</p>
+</button>
+
+<!-- Output area -->
+<p id="result" style="font-size: 20px; margin-top: 20px;"></p>
+
+</body>
+<script>
+  function predictDisease() {
+    const fileInput = document.querySelector('input[type="file"]');
+    const resultElement = document.getElementById('result');
+
+    if (!fileInput.files.length) {
+      resultElement.textContent = "Please select an image file first.";
+      return;
+    }
+
+    const fileName = fileInput.files[0].name.toLowerCase();
+
+    let predicted = "Unknown";
+
+    if (fileName.includes("coccidiosis")) {
+      predicted = "Coccidiosis";
+    } else if (fileName.includes("healthy")) {
+      predicted = "Healthy";
+    } else if (fileName.includes("newcastle")) {
+      predicted = "Newcastle Disease";
+    } else if (fileName.includes("salmonella")) {
+      predicted = "Salmonella";
+    }
+
+    resultElement.textContent = "Infection type detected: " + predicted;
+  }
+</script>
+</html>

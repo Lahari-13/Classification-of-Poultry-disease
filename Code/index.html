@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Poultry Health Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Bouncing animation */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .emoji-button {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 120px;
+            border: none;
+            border-radius: 50%;
+            background-color: #fff4d4;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            color: #333;
+            animation: bounce 1s infinite;
+            transition: background-color 0.3s;
+        }
+
+        .emoji-button:hover {
+            background-color: #ffeaa7;
+        }
+
+        .emoji-button span {
+            font-size: 40px;
+        }
+
+        .emoji-button p {
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="home">
+    <nav> 
+  <ul>
+    <li><a href="#" onclick="showSection('home')">HOME</a></li>
+    <li><a href="#" onclick="showSection('about')">ABOUT</a></li>
+    <li><a href="#" onclick="showSection('contact')">CONTACT</a></li>
+  </ul>
+</nav>
+
+    <!-- HOME Section -->
+<section id="home" class="active">
+  <div class="center-box">
+    <h1>🐔🐣 Welcome to Poultry Health Hub 🐣🐔</h1>
+    <p>Your comprehensive resource for poultry disease management and prevention.</p>
+    <p>Here you can predict your poultry disease </p>
+
+    <!-- Bouncing Hen Emoji Button -->
+    <a href="predict.html" class="emoji-button">
+      <span>🐔</span>
+      <p>Get Started</p>
+    </a>
+  </div>
+</section>
+<!-- ABOUT Section -->
+<section id="about">
+  <div class="center-box"> 
+<li><strong>This poultry Health Hub website is Sponsered by Worldwide Poultry Hub Organization.</li>
+    <h1>How to Maintain a Healthy Poultry Hub 🐓</h1>
+    <ul style="text-align: left; max-width: 600px; margin: auto; font-size: 18px; color: #333;">
+      <li><strong>🧼 Hygiene:</strong> Clean coops and feeders regularly to prevent disease.</li>
+      <li><strong>💧 Water:</strong> Always provide clean, fresh water.</li>
+      <li><strong>🍽️ Nutrition:</strong> Feed a balanced diet with proper nutrients.</li>
+      <li><strong>💉 Vaccinations:</strong> Vaccinate your birds as per vet recommendations.</li>
+      <li><strong>🏡 Housing:</strong> Provide shelter with ventilation and dryness.</li>
+      <li><strong>🔍 Observation:</strong> Isolate and treat sick birds quickly.</li>
+    </ul>
+  </div>
+</section>
+<!-- CONTACT Section -->
+<section id="contact">
+  <div class="center-box">
+     <h2> Contact details </h2>
+<ul style="text-align: left; max-width: 600px; margin: auto; font-size: 18px; color: #333;">
+      <li><strong> ph no:+91 987654321</li>
+      <li><strong> mail id: worldwidepoultry hub@gmail.com</li>
+</ul>
+</div>
+</section>
+               
+     </script>
+<!-- Falling Feather Emojis -->
+<div class="falling-feather" style="left: 10%; animation-duration: 8s; animation-delay: 0s;">🪶</div>
+<div class="falling-feather" style="left: 25%; animation-duration: 10s; animation-delay: 2s;">🪶</div>
+<div class="falling-feather" style="left: 40%; animation-duration: 7s; animation-delay: 4s;">🪶</div>
+<div class="falling-feather" style="left: 60%; animation-duration: 9s; animation-delay: 1s;">🪶</div>
+<div class="falling-feather" style="left: 75%; animation-duration: 11s; animation-delay: 3s;">🪶</div>
+</body>
+</html>             
+<script>
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll("section");
+    sections.forEach(section => {
+      section.classList.remove("active");
+    });
+    document.getElementById(sectionId).classList.add("active");
+  }
+</script>
+
