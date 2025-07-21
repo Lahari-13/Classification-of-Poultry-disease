@@ -1,0 +1,53 @@
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score, classification_report
+import pickle
+
+# Load dataset
+df = pd.read_excel("/content/poultry_disease_dataset.xlsx")
+
+# Encode categorical features
+label_encoders = {}
+for column in df.columns:
+    if df[column].dtype == 'object':
+        le = LabelEncoder()
+        df[column] = le.fit_transform(df[column])
+        label_encoders[column] = le
+
+# Split features and target
+X = df.drop("disease", axis=1)
+y = df["disease"]
+
+# Train final model
+model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=42)
+model.fit(X, y)
+
+# Evaluate model on training data
+y_pred = model.predict(X)
+accuracy = accuracy_score(y, y_pred)
+report = classification_report(y, y_pred, target_names=label_encoders['disease'].classes_)
+
+print("Training Accuracy:", accuracy)
+print("\nClassification Report (Training Data):\n", report)
+
+# Save model and encoders
+with open("poultry_model.pkl", "wb") as f:
+    pickle.dump(model, f)
+
+with open("encoders.pkl", "wb") as f:
+    pickle.dump(label_encoders, f)
+
+# Predict sample input
+sample = pd.DataFrame([["high", "poor", "ruffled", "watery"]],
+                      columns=["temperature", "appetite", "feathers", "droppings"])
+
+# Encode input
+for col in sample.columns:
+    sample[col] = label_encoders[col].transform(sample[col])
+
+# Predict
+prediction = model.predict(sample)[0]
+predicted_disease = label_encoders["disease"].inverse_transform([prediction])[0]
+print("\nPredicted Disease for sample input:", predicted_disease)
